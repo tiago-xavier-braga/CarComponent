@@ -2,11 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WheelPosition{
+    FrontLeft,
+    FrontRight,
+    RearLeft,
+    RearRight
+}
 public class WheelController : MonoBehaviour
 {
     private Rigidbody rb;
 
     [Header("Suspension")]
+    public WheelPosition wheelPosition;
     public float restLength;
     public float springTravel;
     public float springStiffness;
@@ -19,22 +26,35 @@ public class WheelController : MonoBehaviour
     private float springVelocity;
     private float springForce;
     private float damperForce;
+    private float forceX;
+    private float forceY;
 
     private Vector3 suspensionForce;
+    private Vector3 wheelVelocityLocalSpace;
 
     [Header("Wheel")]
     public float wheelRadius;
-
-    public void Start()
+    public float steeringAngle;
+    private void Start()
     {
         rb = transform.root.GetComponent<Rigidbody>();
 
     }
 
-    public void FixedUpdate()
+    private void Update()
     {
-        minLength = restLength - springLength;
-        maxLength = restLength + springLength;
+        transform.localRotation = Quaternion.Euler(
+            transform.localRotation.x, 
+            transform.localRotation.y + steeringAngle, 
+            transform.localRotation.z);
+
+        Debug.DrawRay(transform.position, -transform.up * (springLength + wheelRadius), Color.green);
+    }
+
+    private void FixedUpdate()
+    {
+        minLength = restLength - springTravel;
+        maxLength = restLength + springTravel;
 
         if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, maxLength + wheelRadius))
         {
@@ -47,7 +67,12 @@ public class WheelController : MonoBehaviour
 
             suspensionForce = (springForce + damperForce) * transform.up;
 
-            rb.AddForceAtPosition(suspensionForce, hit.point);
+            wheelVelocityLocalSpace = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
+
+            forceX = Input.GetAxis("Vertical") * springForce;
+            forceY = wheelVelocityLocalSpace.x * springForce;
+
+            rb.AddForceAtPosition(suspensionForce + (forceX * transform.forward) + (forceY * -transform.right), hit.point);
         }
     }
 }

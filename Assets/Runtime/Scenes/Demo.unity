@@ -167,11 +167,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelPosition: 1
   restLength: 0.5
-  springTravel: 0.2
+  springTravel: 5
   springStiffness: 30000
   damperStiffness: 4000
   wheelRadius: 0.33
+  steeringAngle: 0
 --- !u!1001 &239506251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -342,13 +344,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0.049263716, y: 0.70538867, z: -0.049263716, w: -0.70538867}
+  m_LocalPosition: {x: 11.75, y: 4.77, z: -0.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.99, y: 270, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,11 +439,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelPosition: 2
   restLength: 0.5
-  springTravel: 0.2
+  springTravel: 5
   springStiffness: 30000
   damperStiffness: 4000
   wheelRadius: 0.33
+  steeringAngle: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +623,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1036412345}
   - component: {fileID: 1036412346}
+  - component: {fileID: 1036412347}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -641,6 +646,7 @@ Transform:
   m_Children:
   - {fileID: 2055500603}
   - {fileID: 1278245699}
+  - {fileID: 1754145602}
   - {fileID: 1726289551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -671,6 +677,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1036412347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036412344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d635e88bc502a45b78271d9da44296, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheels:
+  - {fileID: 2005590297}
+  - {fileID: 197490825}
+  - {fileID: 394620726}
+  - {fileID: 1048964993}
+  wheelBase: 2.5
+  rearTrack: 1.5
+  turnRadius: 10
+  steerInput: 0
 --- !u!1 &1048964991
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,11 +742,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelPosition: 3
   restLength: 0.5
-  springTravel: 0.2
+  springTravel: 5
   springStiffness: 30000
   damperStiffness: 4000
   wheelRadius: 0.33
+  steeringAngle: 0
 --- !u!1 &1278245698
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,7 +765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1278245699
 Transform:
   m_ObjectHideFlags: 0
@@ -808,6 +837,60 @@ Transform:
   - {fileID: 1048964992}
   m_Father: {fileID: 1036412345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1754145601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754145602}
+  - component: {fileID: 1754145603}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754145602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754145601}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1036412345}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1754145603
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754145601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5056163406262591993, guid: 23fa35205cc4c9d46841b6640ae3d589, type: 3}
 --- !u!1 &2005590295
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,11 +935,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelPosition: 0
   restLength: 0.5
-  springTravel: 0.2
+  springTravel: 5
   springStiffness: 30000
   damperStiffness: 4000
   wheelRadius: 0.33
+  steeringAngle: 0
 --- !u!1 &2055500602
 GameObject:
   m_ObjectHideFlags: 0
