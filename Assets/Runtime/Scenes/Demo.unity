@@ -149,7 +149,7 @@ Transform:
   m_GameObject: {fileID: 197490823}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.874, y: 0.85, z: 1.237}
+  m_LocalPosition: {x: -0.874, y: 0.714, z: 1.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -167,6 +167,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restLength: 0.5
+  springTravel: 0.2
+  springStiffness: 30000
+  damperStiffness: 4000
+  wheelRadius: 0.33
 --- !u!1001 &239506251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -414,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 394620724}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.874, y: 0.85, z: -1.134}
+  m_LocalPosition: {x: 0.874, y: 0.714, z: -1.134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -432,6 +437,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restLength: 0.5
+  springTravel: 0.2
+  springStiffness: 30000
+  damperStiffness: 4000
+  wheelRadius: 0.33
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +697,7 @@ Transform:
   m_GameObject: {fileID: 1048964991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.874, y: 0.85, z: -1.1339998}
+  m_LocalPosition: {x: -0.874, y: 0.714, z: -1.1339998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -705,6 +715,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restLength: 0.5
+  springTravel: 0.2
+  springStiffness: 30000
+  damperStiffness: 4000
+  wheelRadius: 0.33
 --- !u!1 &1278245698
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 2005590295}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.874, y: 0.85, z: 1.237}
+  m_LocalPosition: {x: 0.874, y: 0.714, z: 1.237}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -837,6 +852,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3dc431ced8a7b4d88bc9186e5fa313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  restLength: 0.5
+  springTravel: 0.2
+  springStiffness: 30000
+  damperStiffness: 4000
+  wheelRadius: 0.33
 --- !u!1 &2055500602
 GameObject:
   m_ObjectHideFlags: 0
