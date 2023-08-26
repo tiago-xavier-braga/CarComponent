@@ -2,22 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WheelPosition{
-    FrontLeft,
-    FrontRight,
-    RearLeft,
-    RearRight
-}
 public class WheelController : MonoBehaviour
 {
     private Rigidbody rb;
 
     [Header("Suspension")]
-    public WheelPosition wheelPosition;
     public float restLength;
     public float springTravel;
     public float springStiffness;
     public float damperStiffness;
+
+    [HideInInspector]
+    public float motorTorque;
+    [HideInInspector]
+    public float breakTorque;
 
     private float minLength;
     private float maxLength;
@@ -69,7 +67,7 @@ public class WheelController : MonoBehaviour
 
             wheelVelocityLocalSpace = transform.InverseTransformDirection(rb.GetPointVelocity(hit.point));
 
-            forceX = Input.GetAxis("Vertical") * springForce;
+            forceX = motorTorque;
             forceY = wheelVelocityLocalSpace.x * springForce;
 
             rb.AddForceAtPosition(suspensionForce + (forceX * transform.forward) + (forceY * -transform.right), hit.point);
